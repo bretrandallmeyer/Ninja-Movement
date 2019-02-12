@@ -1,53 +1,60 @@
 import javax.swing.JFrame;
-import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class MyFrame extends JFrame implements KeyListener{
-	
-  Draw drawing;
+
+	Draw drawing;
 
 	public MyFrame(){
 		this.drawing = new Draw();
 	}
 
-   public void keyPressed(KeyEvent e){
+	public void keyPressed(KeyEvent e){
+		if(e.getKeyCode() == KeyEvent.VK_UP){
+			drawing.moveUp();
+			System.out.println("pos: " + drawing.x + ", " + drawing.y);
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+			drawing.moveRight();
+			System.out.println("pos: " + drawing.x + ", " + drawing.y);
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_DOWN){
+			drawing.moveDown();
+			System.out.println("pos: " + drawing.x + ", " + drawing.y);
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_LEFT){
+			drawing.moveLeft();
+			System.out.println("pos: " + drawing.x + ", " + drawing.y);
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_SPACE){
+			drawing.attack();
+			System.out.println("attack");
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_S){
+			drawing.spawnEnemy();
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_Z){
+			drawing.ultimate();
+		}
 
-       if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-           drawing.moveRight();
-       }
+	}
 
-       else if(e.getKeyCode() == KeyEvent.VK_LEFT){
-           drawing.moveLeft();
-       }
+	public void keyReleased(KeyEvent e){
 
-      else if(e.getKeyCode() == KeyEvent.VK_Z){
-           drawing.attack();
-      }
+	}
 
-      else if(e.getKeyCode() == KeyEvent.VK_A){
-           drawing.punch();
-      }
-      else if(e.getKeyCode() == KeyEvent.VK_S){
-           drawing.kick();
-      }
-
-   }
-
-   public void keyReleased(KeyEvent e){
-
-   }
-
-   public void keyTyped(KeyEvent e){
-       System.out.println("....");
-   }
+	public void keyTyped(KeyEvent e){
+		
+	}
 
 	public static void main(String args[]){
 		MyFrame gameFrame = new MyFrame();
-
+		gameFrame.setSize(1920,1080);
 		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gameFrame.setSize(500, 500);
 		gameFrame.setVisible(true);
-    gameFrame.getContentPane().add(gameFrame.drawing);
+		gameFrame.getContentPane().add(gameFrame.drawing);
 		gameFrame.addKeyListener(gameFrame);
+		System.out.println("practical programming");
 	}
 }
