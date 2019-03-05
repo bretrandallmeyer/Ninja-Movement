@@ -5,6 +5,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import javax.swing.JComponent;
+import java.awt.Rectangle;
 
 public class Monster{
 	
@@ -46,6 +47,10 @@ public class Monster{
 		width = image.getWidth();
 
 		animate(comp);
+	}
+
+	public Rectangle getBounds(){
+		return (new Rectangle(xPos, yPos, width, height));
 	}
 
 	public void animate(Draw compPass){
