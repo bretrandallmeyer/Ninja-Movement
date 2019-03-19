@@ -73,8 +73,10 @@ public class Draw extends JComponent{
 
 		for (int i = 0; i < monsters.length; i++){
 			if(player.isAttacking == true){
+				System.out.println("Collision");
 				if(monsters[i].getBounds().intersects(player.getBounds())){
 					monsters[i].life-= 5;
+
 				}
 			}
 			
